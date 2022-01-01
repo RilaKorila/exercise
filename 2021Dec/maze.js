@@ -2,6 +2,7 @@ process.stdin.resume();
 process.stdin.setEncoding('utf8');
 
 var lines = [];
+var IsAchieved = false;
 var reader = require('readline').createInterface({
   input: process.stdin,
   output: process.stdout
@@ -35,12 +36,15 @@ reader.on('close', () => {
             }
     }}
     
+    var now=""
     while(stack.length > 0){
         [x, y] = stack.pop()
-        visited.push([x, y])
-        console.log(`(${x},${y})は訪れた`)
-        if(s[x][y] === "-"){ // 外側にたどり着いた
-            console.log("YES")
+        now = `(${x}, ${y})`
+        visited.push(now)
+        console.log(`(${now})は訪れた`)
+        console.log(`visited: ${visited}`)
+        if((s[x][y+1] === "-") || (s[x][y-1] === "-") || (s[x+1][y] === "-") || (s[x-1][y] === "-")){ // 外側にたどり着いた
+            IsAchieved = true
             break;
         }
 
@@ -58,10 +62,10 @@ reader.on('close', () => {
         }
     }
 
-    console.log("NO")
-
-    for(var a=0; a<h+2; a++){
-        console.log(s[a].join(''))   
+    if(IsAchieved){
+        console.log("YES")
     }
-
+    else{
+        console.log("NO")
+    }
 });
