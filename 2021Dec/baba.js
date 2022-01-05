@@ -76,6 +76,9 @@ reader.on('close', () => {
             }
         }
 
+
+        // ２回のみ曲がっているかを判断
+        // 出力
         if(IsAchieved){
             console.log("yes")
         }
