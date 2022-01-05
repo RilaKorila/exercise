@@ -11,12 +11,13 @@ reader.on('line', (line) => {
   lines.push(line);
 });
 reader.on('close', () => {
-    [h, w, n] = lines[0].split(" ")
-    h = Number(h)
-    w = Number(w)
-    n = Number(n)
+    const h, n, w;
+    [h, w, n] = lines[0].split(" ");
+    h = Number(h);
+    w = Number(w);
+    n = Number(n);
 
-    var field = []
+    var field = [];
     // 外枠は . にする
     field[0] = ".".repeat(w+2).split("")
     for(var i=1; i<h+1; i++){
@@ -25,21 +26,19 @@ reader.on('close', () => {
     field[h+1] = ".".repeat(w+2).split("")
 
     var check = [];
-    var counter = 0;
-    for(i=h+1; i<h+n+1; i++){
-        check[counter] = lines[i].split(" ")
-        counter+=1
+    for(i=h+1; i<(h+n+1); i++){
+        check.push(lines[i].split(" "))
     }
 
     var a1, b1, a2, b2, start, end;
-    for(i=0; i<counter; i++){
-        a1 = Number(check[i][0])
-        b1 = Number(check[i][1])
-        a2 = Number(check[i][2])
-        b2 = Number(check[i][3])
+    for(i=0; i<check.length; i++){
+        a1 = Number(check[i][0]);
+        b1 = Number(check[i][1]);
+        a2 = Number(check[i][2]);
+        b2 = Number(check[i][3]);
 
-        start = `(${a1}, ${b1})`
-        end = `(${a2}, ${b2})`
+        start = `(${a1}, ${b1})`;
+        end = `(${a2}, ${b2})`;
 
         // DFS(push/pop)
         var stack = [];
@@ -62,16 +61,16 @@ reader.on('close', () => {
             }
 
             // . のところのみ移動可能
-            if((visited.indexOf([x,y-1]) === -1) && (field[x][y-1] === ".")){
+            if((visited.indexOf([x,y-1]) === -1) && (y>0) && (field[x][y-1] === ".")){
                 stack.push([x, y-1])
             }
-            if((visited.indexOf([x,y+1]) === -1) && (field[x][y+1] === ".")){
+            if((visited.indexOf([x,y+1]) === -1) && (y<w+2) && (field[x][y+1] === ".")){
                 stack.push([x, y+1])
             }
-            if((visited.indexOf([x-1,y]) === -1) && (field[x-1][y] === ".")){
+            if((visited.indexOf([x-1,y]) === -1) && (x>0) && (field[x-1][y] === ".")){
                 stack.push([x-1, y])
             }
-            if((visited.indexOf([x+1,y]) === -1) && (field[x+1][y] === ".")){
+            if((visited.indexOf([x+1,y]) === -1) && (x<w+2) && (field[x+1][y] === ".")){
                 stack.push([x+1,y])
             }
         }
