@@ -1,16 +1,16 @@
 class Solution:
     def findItinerary(self, tickets: List[List[str]]) -> List(str):
-        # get empty list of source and distination
+        # get empty list of source and destination
         adj = { src: [] for src, dst in tickets}
 
-        # we want distination list of a smaller lexical order 
+        # we want destination list of a smaller lexical order 
         tickets.sort()
         for src, dst in tickets:
             adj[src].append(dst)
 
         res = ["JFK"]
         def dfs(src):
-            # finish condition: we visited all distination
+            # finish condition: we visited all destination
             if len(res) == len(tickets) +1:
                 return True
             # this src does not have any out going edges from it 
@@ -28,9 +28,9 @@ class Solution:
                 if dfs(v):
                     return True
                 
-                # if dfs returns False, we have to back track the above dicision 
+                # if dfs returns False, we have to back track the above decision 
                 adj[src].insert(i, v)
-                # reverse the last dicision
+                # reverse the last decision
                 res.pop()
             return False
         
