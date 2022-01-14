@@ -9,7 +9,7 @@
 
 class Solution:
     def canFinish(self, numCourse: int, prerequisites: List[List[int]]) -> bool:
-            # すべてのcourseのprerequisitesを[]で初期化 
+            # initialize prerequisites of courses as empty
             preMap = {i: [] for i in range(numCourse)}
             for crs, pre in prerequisites:
                 preMap[crs].append(pre)
@@ -20,6 +20,7 @@ class Solution:
                 # if we visited twice
                 if crs in visitSet: # = detect Loop = we cant complete prerequisites
                     return False
+                # this course is not required any prerequisites
                 if preMap[crs] == []:
                     return True
 

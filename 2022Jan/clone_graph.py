@@ -22,7 +22,6 @@ class Solution:
             for nei in node.neighbors:
                 # dfs(nei) returns clone of node
                 copy.neighbors.append(dfs(nei))
-            
             return copy
         
         return dfs(node) if node else None
