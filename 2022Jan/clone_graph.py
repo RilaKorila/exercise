@@ -6,6 +6,7 @@ class Node:
 
 class Solution:
     def cloneGraph(self, node: 'Node'):
+        # nodes which is already copied
         oldToNew = {}
 
         def dfs(node):
