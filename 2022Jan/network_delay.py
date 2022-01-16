@@ -3,14 +3,14 @@
 
 class Solution:
     def networkDelayTime(self, times: List[List[int], n: int, k:int]) -> int:
-        edges = collection.defaultdict(list)
+        edges = collections.defaultdict(list)
 
         # u: node
         # v: neighbor of node v
         # w: weight of the edge btw u and v
-        for u, v, w = times:
+        for u, v, w in times:
             edges[u].append((v, w))
-        
+
         #  k: start node
         minHeap = [(0, k)]
         visit = set()
@@ -19,7 +19,7 @@ class Solution:
         while minHeap:
             # heapq.heappop(minHeap): pick up min value from minHeap
             # w1: weight, n1: node
-            
+
             w1, n1 = heapq.heappop(minHeap)
             # if n1 is already visited
             if n1 in visit:
@@ -30,7 +30,7 @@ class Solution:
             # n2: all neighbors of n1 node
             for n2, w2 in edges[n1]:
                 if n2 not in visit:
-                    heapq.heappop(minHeap, (w1+w1, n2))
-    
-    # len(visit) == n: we can't visit every single node
-    return t if len(visit) == n else -1
+                    heapq.heappush(minHeap, (w1+w2, n2))
+
+        # len(visit) == n: we can't visit every single node
+        return t if len(visit) == n else -1
