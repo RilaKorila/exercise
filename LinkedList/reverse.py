@@ -37,7 +37,7 @@ class Solution:
             nxt = cur.next
             cur.next = prev
             prev = cur
-            cur = next
+            cur = nxt
         return prev
 
         # recursive:  Time: O(n), Memory: O(n)
