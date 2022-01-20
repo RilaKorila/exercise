@@ -7,18 +7,20 @@ class ListNode(self, val=0, next=None):
 
 class Solution:
     # array solution: time O(n), space O(n)
-    def idPalindrome(self, head: ListNode) -> bool:
-        nums = []
+    # def idPalindrome(self, head: ListNode) -> bool:
+    #     nums = []
 
-        while head:
-            nums.append(head.val)
-            head = head.next
+    #     while head:
+    #         nums.append(head.val)
+    #         head = head.next
         
-        l, r = 0, len(nums)-1
-        while(l <= r):
-            if nums[l] != nums[r]:
-                return False
-            l += 1
-            r -= 1
+    #     l, r = 0, len(nums)-1
+    #     while(l <= r):
+    #         if nums[l] != nums[r]:
+    #             return False
+    #         l += 1
+    #         r -= 1
 
-        return True
+    #     return True
+
+    # Linked List solution: time O(n), space O(1)
