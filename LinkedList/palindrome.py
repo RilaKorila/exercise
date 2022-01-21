@@ -23,4 +23,38 @@ class Solution:
 
     #     return True
 
-    # Linked List solution: time O(n), space O(1)
+    # 2 Pointer solution: time O(n), space O(1)
+    # Fast Pointer 
+    # when Fast Pointer reach at the end of list, slow pointer reached at middle of the list
+    class Solution:
+        def isPalindrome(self, head: ListNode) -> Npnel:
+            fast = head
+            slow = head
+
+            # find middle (slow)
+            while fast and fast.next:
+                # fast pointer is twice faster than slow pointer
+                fast = fast.next.next
+                slow = slow.next
+
+            # reverse second half
+            prev = None
+            # until reach at the end
+            while slow:
+                temp = slow.next
+                slow.next = prev
+                prev = slow
+                slow = temp
+            
+            # check palindrom
+            left , right = head, prev
+            while right:
+                if left.val != right.val:
+                    return False
+                
+                left = left.next
+                right = right.next
+
+            return True
+
+                
