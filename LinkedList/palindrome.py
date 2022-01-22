@@ -27,7 +27,7 @@ class Solution:
     # Fast Pointer 
     # when Fast Pointer reach at the end of list, slow pointer reached at middle of the list
     class Solution:
-        def isPalindrome(self, head: ListNode) -> Npnel:
+        def isPalindrome(self, head: ListNode) -> Boolean:
             fast = head
             slow = head
 
