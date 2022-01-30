@@ -2,12 +2,13 @@
 # to avoid edge case, we will make dummy node
 
 # Definition for singly-linked list.
-# class ListNode:
-#     def __init__(self, val=0, next=None):
-#         self.val = val
-#         self.next = next
+class ListNode:
+    def __init__(self, val=0, next=None):
+        self.val = val
+        self.next = next
+
 class Solution:
-    def mergeTwoLists(self, list1: Optional[ListNode], list2: Optional[ListNode]) -> Optional[ListNode]:
+    def mergeTwoLists(self, list1: ListNode, list2: ListNode) -> ListNode:
         dummy = ListNode()
         tail = dummy
 
@@ -26,7 +27,7 @@ class Solution:
         if l1:
             tail.next = l1
         else:
-            tail.next = n2
+            tail.next = l2
         
         
         return dummy.next
