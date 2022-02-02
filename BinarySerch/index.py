@@ -12,6 +12,8 @@ class Solution:
         # index of bin search
         l, r = 0, len(nums)-1
         
+        # if target is not included in nums, we have to return -1
+        ans = -1
         while l <= r:
             # m: middle index of bin search, must be int not float
             m = (l+r) // 2
