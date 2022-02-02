@@ -35,7 +35,7 @@ class Solution:
         
         
         # Neetcode
-         while l<=r:
+        while l<=r:
             m = (l+r)//2  
             if target == nums[m]:
                 return m
