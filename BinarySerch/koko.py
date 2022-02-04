@@ -16,6 +16,7 @@ class Solution:
                 else:
                     time += (pile // k) + 1
                 
+                # math.ceil(pile/k)
             return time <= h
         
         
