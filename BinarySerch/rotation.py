@@ -48,6 +48,33 @@ class Solution:
         return -1
     # ----- can write by myself ^^ -----------
     
-   
+    # ↓ NeetCode Answer
+    def search_Ans(self, nums: List[int], target: int) -> int:
+        l, r = 0, len(nums)-1
+        
+        while l <= r:
+            m = (l+r) //2
+            if target == nums[m]:
+                return m
+            
+            # left sorted portion
+            if nums[l] <= nums[m]:
+                if target > nums[m] or target < nums[l]:
+                    l = m+1
+                else:
+                    # target is less than middle and greater than left
+                    r = m-1
+            # right sorted portion
+            else:
+                if target < nums[m] or target > nums[r]:
+                    r = m-1
+                else:
+                    # target is greater than middle, less than right
+                    # only search right portion
+                    l = m+1
+        
+        return -1
+                    
+                
     
         
