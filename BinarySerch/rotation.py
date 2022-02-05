@@ -3,15 +3,15 @@ class Solution:
     def search(self, nums: List[int], target: int) -> int:
         l, r = 0, len(nums)-1
         
-        def isInLeftPotion(m):
+        def isInLeftPortion(m):
             return nums[0] <= nums[m] 
         
         while l<=r:
             m = (l+r)//2
             
-            if isInLeftPotion(m):
+            if isInLeftPortion(m):
                 if nums[m] < target:
-                    # target is in difinitely right side
+                    # target is in definitely right side
                     l = m+1
                 elif nums[m] > target:
                     # both side is possible
@@ -25,7 +25,7 @@ class Solution:
                 else:
                     return m
                
-            # m is in right potion
+            # m is in right portion
             else:
                 if target < nums[m]:
                     # target is definitely in left side
