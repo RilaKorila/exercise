@@ -3,8 +3,6 @@
 # o: [({})]
 # x: [(])
 # At first, we see open parenthesis until we see closed parenthesis
-from asyncio import format_helpers
-
 
 class Solution:
     def isValid(self, s: str) -> bool:
