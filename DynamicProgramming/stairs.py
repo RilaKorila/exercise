@@ -2,7 +2,7 @@
 class Solution:
     def climbStairs(self, n: int) -> int:
         # DP: store memory, and skip the same execution
-        one, two = 0, 1
+        one, two = 1, 0
         
         for i in range(n-1):
             temp = one

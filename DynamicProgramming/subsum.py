@@ -33,7 +33,7 @@ class SubSum:
         for i in range(1, ROWS):
             for j in range(COLS):
                 # check the above table
-                tmp_not_choice = dp_table[i-1][j]
+
                 # if the value of card i is more than cost, 
                 # we do not add the value (= add the same value as the above cell)
                 if nums[i] > j:
