@@ -10,6 +10,14 @@
 # guess(数字)　＝＞　大きい？小さい？
 
 class Solution:
+    def guess(self, n:int, pick: int) -> int:
+        if n == pick:
+            return 0
+        elif n > pick:
+            return -1
+        else:
+            return 1
+    
     def guessNumber(self, n: int) -> int:
         # guess(3) -> lower : 1
         
@@ -20,11 +28,11 @@ class Solution:
             
             
             # m はtargetより大きい
-            if guess(m) == -1:
+            if self.guess(m) == -1:
                 r = m-1
                 
             # m は targetよりも小さい
-            elif guess(m) == 1:
+            elif self.guess(m) == 1:
                 l = m+1
             
             else:
