@@ -19,7 +19,7 @@ class Solution:
     # preorder: root->left->right
     # postorder: left->right->root
     
-    def inorderWithoutRecursion(self, root: Optopnal[TreeNode])->List[int]:
+    def inorderWithoutRecursion(self, root: Optional[TreeNode])->List[int]:
         # solusion using stack: O(n)
         s = []
         cur = root
@@ -44,4 +44,30 @@ class Solution:
                 
         return res
 
-    
+    # cf. https://www.geeksforgeeks.org/inorder-tree-traversal-without-recursion-and-without-stack/
+    def inorder(self, root: Optional[TreeNode])->List[int]:
+        # solusion without recursive and stack: O(n)
+        cur = root
+        res = []
+        
+        while cur:
+            # does not have left children
+            if not cur.left:
+                res.append(cur.val)
+                cur = cur.right
+            
+            else:
+                # have left children
+                pre = cur.left
+                while pre.right and pre.right is not cur:
+                    pre = pre.right
+
+                if not pre.right:
+                    pre.right = cur
+                    cur = cur.left
+
+                else:
+                    pre.right = None
+                    res.append(cur.val)
+                    cur = cur.right            
+        return res
