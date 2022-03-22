@@ -13,8 +13,6 @@ class Fibonacci:
     
     # memorization
     def memo_fib(self, n:int)->int:
-        
-        
         if n<=1:
             return 1
         else:
