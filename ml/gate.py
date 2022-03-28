@@ -79,3 +79,49 @@ for i in range(0, len(x), batch_size):
     acc += np.sum(p == t_idx)
 
 print("Accuracy: ", str(float(acc / len(x))))
+
+class NN3:
+    """クラスの説明タイトル
+
+        クラスについての説明文
+
+    """
+    def __init__(self):
+        self.network = {}
+        self.network['W1'] = np.array([[0.1, 0.3, 0.5], [0.2, 0.4, 0.6]])
+        self.network['W2'] = np.array([[0.1, 0.4], [0.2, 0.5], [0.3, 0.6]])
+        self.network['W3'] = np.array([[0.1, 0.3], [0.2, 0.4]])
+        self.network['b1'] = np.array([0.1, 0.2, 0.3])
+        self.network['b2'] = np.array([0.1, 0.2])
+        self.network['b3'] = np.array([0.1, 0.2])
+
+    def sigmoid(self, x):
+        return 1/(1+np.exp(-x))
+
+    def identity_function(self, x):
+        return x
+
+    def forward(self, X):
+        """入力信号を出力に変換
+
+        Parameters:
+        X -> input(np.array: 2 dim)
+    
+        Returns:
+        y -> output(np.array: 2 dim)
+
+        """
+        W1, W2, W3 = self.network['W1'], self.network['W2'], self.network['W3']
+        b1, b2, b3 = self.network['b1'], self.network['b2'], self.network['b3']
+
+
+        a1 = np.dot(X, W1) + b1
+        z1 = self.sigmoid(a1)
+
+        a2 = np.dot(z1, W2) + b2
+        z2 = self.sigmoid(a2)
+
+        a3 = np.dot(z2, W3) + b3
+        y = self.identity_function(a3)
+
+        return y
